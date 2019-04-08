@@ -34,7 +34,7 @@
         var title = $('#title').val();
         var text = $('#text').val();
         var btn = $(this);
-        window.open('look.html?' + "title=" + encodeURI(title) + "&text=" + encodeURI(text));
+        window.location.href='look.html?' + "title=" + encodeURI(title) + "&text=" + encodeURI(text);
         btn.button('reset');
     }
 
