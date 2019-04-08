@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
+    <meta content="always" name="referrer">
     <title>Blog</title>
     <link rel="stylesheet" href="./public/stylesheets/style.css">
 </head>
@@ -50,8 +51,8 @@
         var n1 = loc.length;//地址的总长度
         var n2 = loc.indexOf("=");//取得=号的位置
         var n3 = loc.indexOf("&");//取得=号的位置
-        var tilte_text = decodeURI(loc.substr(n2 + 1, n3 - n2-1));//从=号后面的内容
-        var my_text = decodeURI(loc.substr(n3 + 6, n1 - n3-1));//从=号后面的内容
+        var tilte_text = decodeURI(loc.substr(n2 + 1, n3 - n2 - 1));//从=号后面的内容
+        var my_text = decodeURI(loc.substr(n3 + 6, n1 - n3 - 1));//从=号后面的内容
         document.getElementById('t1').innerText = tilte_text;
         document.getElementById('t2').innerText = my_text;
         $('#btnPost').click(onClickPost);
@@ -60,14 +61,9 @@
     function onClickPost() {
         var comment = $('#comment').val();
         var btn = $(this);
-        $.post("http://47.92.219.4/agentBack/api/publish/comment", {
-            comment : comment,
-        }, function(result) {
-            $('#comment').val("");
-            $('p').append(result.data.time1+"<br>"+result.data.comment+"<br>");
-            // document.getElementById("div1").innerHTML="<span>"+result.data.time1+"</span> </br> <span>"+result.data.comment+"</span>";
-            btn.button('reset');
-        });
+        $('p').append(comment + "<br>");
+        $('#comment').val("");
+        btn.button('reset');
     }
 
 </script>
