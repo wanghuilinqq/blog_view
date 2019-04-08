@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Blog</title>
+    <link rel="stylesheet" href="./public/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+    <h1>我的博客</h1>
+</header>
+
+<nav>
+    <span><a title="主页" href="/">发表博客</a></span>
+</nav>
+<article>
+    <form method="post">
+        标题：<br/>
+        <input type="text" name="title" id="title"/><br/>
+        正文：<br/>
+        <textarea name="text" rows="20" cols="100" id="text"></textarea><br/>
+        <input type="button" value="发表" id="btnPost" />
+    </form>
+</article>
+<script src="./public/extern/jquery/jquery-1.11.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#btnPost').click(onClickPost);
+    });
+
+    function onClickPost() {
+        var title = $('#title').val();
+        var text = $('#text').val();
+        var btn = $(this);
+        $.post("http://47.92.219.4/agentBack/api/publish/blog", {
+            title: title,
+            text: text,
+        }, function (result) {
+            window.open('look.html?'+"title="+encodeURI(title)+"&text="+encodeURI(text));
+            btn.button('reset');
+        });
+    }
+
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Blog</title>
+    <link rel="stylesheet" href="./public/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+    <h1>我的博客</h1>
+</header>
+
+<nav>
+    <span><a title="主页" href="index.html">发表博客</a></span>
+</nav>
+
+<br>
+
+<div>
+    <span id="t3"></span>
+    <span>
+        <h3> <strong style="color: red" id="t1"></strong></h3>
+    </span>
+    <span>
+         <strong style="color: darkgreen" id="t2"></strong>
+    </span>
+
+</div>
+<br>
+<span>评论</span>
+<hr>
+<div>
+    <div id="div1">
+        <p></p>
+    </div>
+    <br>
+    <div id="div2">
+        发表评论：<br>
+        <input type="text" name="comment" id="comment"><br>
+        <input type="button" value="评论" id="btnPost">
+    </div>
+</div>
+
+<script src="./public/extern/jquery/jquery-1.11.1.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var loc = location.href;
+        var n1 = loc.length;//地址的总长度
+        var n2 = loc.indexOf("=");//取得=号的位置
+        var n3 = loc.indexOf("&");//取得=号的位置
+        var tilte_text = decodeURI(loc.substr(n2 + 1, n3 - n2-1));//从=号后面的内容
+        var my_text = decodeURI(loc.substr(n3 + 6, n1 - n3-1));//从=号后面的内容
+        document.getElementById('t1').innerText = tilte_text;
+        document.getElementById('t2').innerText = my_text;
+        $('#btnPost').click(onClickPost);
+    });
+
+    function onClickPost() {
+        var comment = $('#comment').val();
+        var btn = $(this);
+        $.post("http://47.92.219.4/agentBack/api/publish/comment", {
+            comment : comment,
+        }, function(result) {
+            $('#comment').val("");
+            $('p').append(result.data.time1+"<br>"+result.data.comment+"<br>");
+            // document.getElementById("div1").innerHTML="<span>"+result.data.time1+"</span> </br> <span>"+result.data.comment+"</span>";
+            btn.button('reset');
+        });
+    }
+
+</script>
+
+</body>
+</html>
