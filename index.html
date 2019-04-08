@@ -4,7 +4,6 @@
     <meta charset="UTF-8"/>
     <title>Blog</title>
     <link rel="stylesheet" href="./public/stylesheets/style.css">
-    <meta content="always" name="unsafe-url">
 </head>
 <body>
 
@@ -34,7 +33,7 @@
         var title = $('#title').val();
         var text = $('#text').val();
         var btn = $(this);
-        $.post("http://47.92.219.4/agentBack/api/publish/blog", {
+        $.post("https://47.92.219.4/agentBack/api/publish/blog", {
             title: title,
             text: text,
         }, function (result) {
