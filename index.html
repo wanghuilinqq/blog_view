@@ -16,7 +16,7 @@
     <span><a title="主页" href="/">发表博客</a></span>
 </nav>
 <article>
-    <form method="post">
+    <form method="post" action="http://47.92.219.4/agentBack/api/publish/blog">
         标题：<br/>
         <input type="text" name="title" id="title"/><br/>
         正文：<br/>
@@ -34,8 +34,13 @@
         var title = $('#title').val();
         var text = $('#text').val();
         var btn = $(this);
-        window.location.href='look.html?' + "title=" + encodeURI(title) + "&text=" + encodeURI(text);
+        // $.post("http://47.92.219.4/agentBack/api/publish/blog", {
+        //     title: title,
+        //     text: text,
+        // }, function (result) {
+        window.open('look.html?' + "title=" + encodeURI(title) + "&text=" + encodeURI(text));
         btn.button('reset');
+        // });
     }
 
 </script>
