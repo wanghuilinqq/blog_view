@@ -12,7 +12,9 @@
     "express.js"
   ],
   "author": "wanghuilinqq",
-  "dependencies": {},
+  "dependencies": {
+    "path": "^0.12.7"
+  },
   "devDependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
