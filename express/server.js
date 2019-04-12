@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const router = express.Router();
 router.post('/', (req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
     let title = req.body.title ? req.body.title : 'null';
     let text = req.body.text ? req.body.text : 'null';
     let json = {
@@ -19,11 +18,12 @@ router.post('/', (req, res) => {
         throw err;
       }
     })
+    res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write(`
     <div>
     <span id="t3"></span>
     <span>
-        <h3> <strong style="color: red" id="t1"></strong>${title}</h3>
+        <h3> <strong style="color: red" id="t1"></strong>${req.body}</h3>
     </span>
     <span>
          <strong style="color: darkgreen" id="t2">${text}</strong>
