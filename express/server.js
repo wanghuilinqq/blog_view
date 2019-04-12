@@ -7,14 +7,7 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write(`<head>
-  <meta charset="UTF-8"/>
-  <title>Blog</title>
-  <link rel="stylesheet" href="../public/stylesheets/style.css">
-  <meta http-equiv ="Content-Security-Policy" content="upgrade-insecure-requests">
-</head>
-<body>
-
+  res.write(`
 <header>
   <h1>我的博客</h1>
 </header>
@@ -31,7 +24,7 @@ router.get('/', (req, res) => {
       <input type="button" value="发表" id="btnPost" />
   </form>
 </article>
-</body>`);
+`);
   res.end();
 });
 
