@@ -42,31 +42,10 @@
         <input type="button" value="评论" id="btnPost">
     </div>
 </div>
-
-<script src="./public/extern/jquery/jquery-1.11.1.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        var loc = location.href;
-        var n1 = loc.length;//地址的总长度
-        var n2 = loc.indexOf("=");//取得=号的位置
-        var n3 = loc.indexOf("&");//取得=号的位置
-        var tilte_text = decodeURI(loc.substr(n2 + 1, n3 - n2 - 1));//从=号后面的内容
-        var my_text = decodeURI(loc.substr(n3 + 6, n1 - n3 - 1));//从=号后面的内容
-        document.getElementById('t1').innerText = tilte_text;
-        document.getElementById('t2').innerText = my_text;
-        $('#btnPost').click(onClickPost);
-    });
-
-    function onClickPost() {
-        var comment = $('#comment').val();
-        var btn = $(this);
-        $('p').append(comment + "<br>");
-        $('#comment').val("");
-        btn.button('reset');
-    }
-
-</script>
-
+<object
+  type="text/html"
+  data="/.netlify/functions/look"
+  style="width:100%;height:100%;"
+>
 </body>
 </html>
