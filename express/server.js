@@ -13,11 +13,11 @@ router.post('/', (req, res) => {
       "title":title,
       "text":text
     }
-    fs.writeFile('../src/data.json',json,'utf-8',function(err,data){
-      if(err){
-        throw err;
-      }
-    })
+    // fs.writeFile('../src/data.json',json,'utf-8',function(err,data){
+    //   if(err){
+    //     throw err;
+    //   }
+    // })
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write(`
     <div>
