@@ -18,20 +18,21 @@ router.post('/', (req, res) => {
     //     throw err;
     //   }
     // })
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write(`
-    <div>
-    <span id="t3"></span>
-    <span>
-        <h3> <strong style="color: red" id="t1"></strong>${JSON.stringify(req)}</h3>
-    </span>
-    <span>
-         <strong style="color: darkgreen" id="t2">${text}</strong>
-    </span>
+    // res.writeHead(200, { 'Content-Type': 'text/html' });
+    // res.write(`
+    // <div>
+    // <span id="t3"></span>
+    // <span>
+    //     <h3> <strong style="color: red" id="t1"></strong>${JSON.stringify(req)}</h3>
+    // </span>
+    // <span>
+    //      <strong style="color: darkgreen" id="t2">${text}</strong>
+    // </span>
 
-    </div>
-    `);
-    res.end();
+    // </div>
+    // `);
+    // res.end();
+    res.send(JSON.stringify(req))
 });
 
 app.use(bodyParser.json());
