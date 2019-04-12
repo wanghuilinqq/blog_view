@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
     <div>
     <span id="t3"></span>
     <span>
-        <h3> <strong style="color: red" id="t1"></strong>${JSON.stringify(req.body)}</h3>
+        <h3> <strong style="color: red" id="t1"></strong>${JSON.stringify(req)}</h3>
     </span>
     <span>
          <strong style="color: darkgreen" id="t2">${text}</strong>
