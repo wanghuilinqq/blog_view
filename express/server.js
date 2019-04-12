@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
     // </div>
     // `);
     // res.end();
-    res.send(JSON.stringify(req))
+    res.end(JSON.stringify(req))
 });
 
 app.use(bodyParser.json());
