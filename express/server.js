@@ -5,9 +5,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const router = express.Router();
-// app.use(express.static(path.join(__dirname,'/public')));
-router.get('/', (req, res) => {
-    res.render('look.html')
+router.post('/', (req, res) => {
+    // res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.send(req.body);
 });
 
 app.use(bodyParser.json());
