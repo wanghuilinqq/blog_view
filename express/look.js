@@ -9,7 +9,6 @@ router.post('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   let data = req.body;
   res.render('../look.html',data);
-//   res.end();
 });
 
 app.use(bodyParser.json());
