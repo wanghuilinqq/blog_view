@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   res.write(`<head>
   <meta charset="UTF-8"/>
   <title>Blog</title>
-  <link rel="stylesheet" href="./public/stylesheets/style.css">
+  <link rel="stylesheet" href="../public/stylesheets/style.css">
   <meta http-equiv ="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
 <body>
@@ -34,8 +34,7 @@ router.get('/', (req, res) => {
 </body>`);
   res.end();
 });
-router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
-router.post('/', (req, res) => res.json({ postBody: req.body }));
+
 
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
