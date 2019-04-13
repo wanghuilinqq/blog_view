@@ -43,7 +43,7 @@ module.exports.handler = (event, context, callback) => {
                           <br>
                           <span>评论</span>
                           <hr>
-                          <div id="div_${id}"> </div>
+                          <div id="c_${id}"> </div>
                           <div>
                             <form method="post" action="/.netlify/functions/server">
                                 发表评论：<br>
@@ -59,7 +59,7 @@ module.exports.handler = (event, context, callback) => {
 
 
   } else if(params.comment) {
-    let query_str = "div_"+params.id;
+    let query_str = "c_"+params.id;
     let query_length = query_str.length;
     let index_str = html_02.indexOf(query_str);
     let html_03 = `<span><strong>${params.comment}</strong></span><br>`;
@@ -69,7 +69,7 @@ module.exports.handler = (event, context, callback) => {
     html = header + html_02+ flooter;
 
 
-    
+
   } else if(params.myBlog) {
     html = header + html_02 + flooter;
   }
