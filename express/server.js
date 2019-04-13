@@ -42,39 +42,12 @@ module.exports.handler = function(event, context, callback) {
                 
             </div>
             <br>
-            <div id="div2">
+            <form method="post" action="/.netlify/functions/look">
                 发表评论：<br>
                 <input type="text" name="comment" id="comment"><br>
-                <input type="button" value="评论" id="btnPost">
-            </div>
+                <input type="submit" value="评论" id="btnPost">
+            </form>
         </div>
-        <script src="https://flamboyant-bhabha-fbbffb.netlify.com/public/extern/jquery/jquery-1.11.1.min.js"></script>
-       
-        <script>
-            $(document).ready(function() {
-                $('#btnPost').click(onClickPost);
-            });
-        
-            function onClickPost() {
-                var comment = $('#comment').val();
-                var btn = $(this);
-                $.ajax({
-                  type: "GET",
-                  url: "/.netlify/functions/look",
-                  data: {comment:comment},
-                  dataType: "json",
-                  success: function(data){
-                              $('#comment').empty();
-                              var html = ''; 
-                              $.each(data, function(commentIndex, comment){
-                                    html += '<div><p"' + data.comment + '</p></div>';
-                              });
-                              $('#div1').html(html);
-                           }
-                })
-            }
-        
-        </script>
     </body>
 </html>
     `
