@@ -50,7 +50,22 @@ module.exports.handler = function(event, context, callback){
     },
     statusCode: 200,
     body: `
-    <div>
+<head>
+<meta charset="UTF-8"/>
+<meta content="always" name="referrer">
+<title>Blog</title>
+<link rel="stylesheet" href="./public/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+    <h1>我的博客</h1>
+</header>
+
+<nav>
+    <span><a title="主页" href="index.html">发表博客</a></span>
+</nav>
+<div>
     <span id="t3"></span>
     <span>
         <h3> <strong style="color: red" id="t1"></strong>${params.title}</h3>
@@ -59,7 +74,50 @@ module.exports.handler = function(event, context, callback){
          <strong style="color: darkgreen" id="t2">${params.text}</strong>
     </span>
 
+</div>
+<br>
+<br>
+<span>评论</span>
+<hr>
+<div>
+    <div id="div1">
+        
     </div>
+    <br>
+    <div id="div2">
+        发表评论：<br>
+        <input type="text" name="comment" id="comment"><br>
+        <input type="button" value="评论" id="btnPost">
+    </div>
+</div>
+<script src="./public/extern/jquery/jquery-1.11.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#btnPost').click(onClickPost);
+    });
+
+    function onClickPost() {
+        var comment = $('#comment').val();
+        var btn = $(this);
+        $.ajax({
+          type: "GET",
+          url: "/.netlify/functions/look",
+          data: {comment:comment},
+          dataType: "json",
+          success: function(data){
+                      $('#comment').empty();
+                      var html = ''; 
+                      $.each(data, function(commentIndex, comment){
+                            html += '<div><p"' + data.comment + '</p></div>';
+                      });
+                      $('#div1').html(html);
+                   }
+        })
+    }
+
+</script>
+</body>
+    
     `
     });
 };
