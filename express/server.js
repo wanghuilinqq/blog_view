@@ -20,21 +20,21 @@ module.exports.handler = function(event, context, callback) {
         <header> <h1>我的博客</h1> </header>
         
         <nav>
-            <span><a title="主页" href="index.html">发表博客</a></span>
+            <span><a title="主页" href="https://flamboyant-bhabha-fbbffb.netlify.com/index.html">发表博客</a></span>
         </nav>
         
         <div>
             <span id="t3"></span>
             <span>
-                <h3> <strong style="color: red" id="t1"></strong>${params.title}</h3>
+                <h3> 标题-<strong style="color: red" id="t1"></strong>${params.title}</h3>
             </span>
             <span>
-                 <strong style="color: darkgreen" id="t2">${params.text}</strong>
+                 正文-<strong style="color: darkgreen" id="t2">${params.text}</strong>
             </span>
         </div>
         
         <br>
-        <hr>
+        <br>
         <span>评论</span>
         <hr>
         <div>
