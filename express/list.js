@@ -14,13 +14,13 @@ function get_file() {
   });
 }
 
-module.exports.handler = async function(event, context) {
+module.exports.handler = function(event, context, callback) {
   const params = querystring.parse(event.body);
   get_file().then(data => {
     let person = data.toString();
     person = JSON.parse(person);
     let rets = person.data;
-    return {
+    callback(null, {
       headers : {
         "content-type" : 'text/html'
       },
@@ -44,15 +44,15 @@ module.exports.handler = async function(event, context) {
             </body>
         </html>
 `
-    };
-  }).catch(err =>{
-    return {
+    });
+  }).catch(err => {
+    callback({
       headers : {
         "content-type" : 'text/html'
       },
       statusCode : 200,
       body : String(err)
-    };
+    });
   });
 
 };
