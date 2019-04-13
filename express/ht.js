@@ -1,5 +1,4 @@
-
-const header =  `<html>
+let header = `<html>
             <head>
                 <meta charset="UTF-8"/>
                 <title>Blog</title>
@@ -15,15 +14,12 @@ const header =  `<html>
                     <span><a title="主页" href="https://condescending-franklin-acde9d.netlify.com/index.html">发表博客</a></span>
                 </nav>
                 <div id = "div_01">
-             
+               
+
 `;
-const html_02 = ``;
-const header = flooter = `
-    </div>
+let html_02 = ``;
+let flooter = `
+</div>
     </body>
     </html>
 `;
-
-const app = require('./express');
-
-app.listen(3000, () => console.log('Local app listening on port 3000!'));
