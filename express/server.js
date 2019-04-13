@@ -1,4 +1,6 @@
 import querystring from "querystring";
+import style from "../public/stylesheets/style.css";
+import jquery from "../public/extern/jquery/jquery-1.11.1.min.js";
 const fs = require('fs');
 module.exports.handler = function(event, context, callback){
   const params = querystring.parse(event.body);
@@ -12,7 +14,9 @@ module.exports.handler = function(event, context, callback){
 <meta charset="UTF-8"/>
 <meta content="always" name="referrer">
 <title>Blog</title>
-<link rel="stylesheet" href="../public/stylesheets/style.css">
+<style>
+    ${style}
+</style>
 </head>
 <body>
 
@@ -48,7 +52,10 @@ module.exports.handler = function(event, context, callback){
         <input type="button" value="评论" id="btnPost">
     </div>
 </div>
-<script src="../public/extern/jquery/jquery-1.11.1.min.js"></script>
+<script src="./public/extern/jquery/jquery-1.11.1.min.js"></script>
+<script>
+${jquery}
+</script>
 <script>
     $(document).ready(function() {
         $('#btnPost').click(onClickPost);
@@ -75,7 +82,7 @@ module.exports.handler = function(event, context, callback){
 
 </script>
 </body>
-    
+</html>
     `
     });
 };
