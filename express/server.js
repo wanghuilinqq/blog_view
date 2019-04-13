@@ -33,7 +33,7 @@ module.exports.handler = (event, context, callback) => {
     html_02 += `
                        <div>
                           <span>
-                              <h3><strong style="color: cyan">博客-${id}</strong> &nbsp;标题-<strong style="color: goldenrod"></strong>${params.title}</h3>
+                              <h3><strong style="color: bisque">博客-${id}</strong> &nbsp;<strong style="color: goldenrod">标题-${params.title}</strong></h3>
                           </span>
                           <span>
                                正文-<strong style="color: darkgreen">${params.text}</strong>
