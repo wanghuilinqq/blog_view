@@ -63,8 +63,7 @@ module.exports.handler = (event, context, callback) => {
     let html_03 = `<span><strong>${params.comment}</strong></span><br>`;
     html_02 = html_02.slice(0, index_str + query_length) + html_03 + html_02.slice(index_str + query_length);
 
-  } else if(params.clearBlog) {
-
+  } else if(params.hasOwnProperty(clearBlog)) {
     html_02 = ``;
     id = 1;
   }
