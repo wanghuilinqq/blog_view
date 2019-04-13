@@ -1,13 +1,14 @@
 import querystring from "querystring";
 
 let fs = require('fs');
-
+let dd = null;
 function get_file() {
   return new Promise(function(resolve, reject) {
     fs.readFile('https://condescending-franklin-acde9d.netlify.com/data/data.json', function(err, data) {
       if(err) {
         reject(err);
       } else {
+        dd = data;
         resolve(data);
       }
     });
@@ -51,7 +52,7 @@ module.exports.handler = function(event, context, callback) {
         "content-type" : 'text/html'
       },
       statusCode : 200,
-      body : String(err)
+      body : dd
     });
   });
 
