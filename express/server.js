@@ -19,7 +19,7 @@ let header =  `<html>
 `;
 let html_02 = ``;
 
-let header = flooter = `
+let flooter = `
     </div>
     </body>
     </html>
