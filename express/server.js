@@ -1,5 +1,5 @@
 import querystring from "querystring";
-
+let global_html = ``;
 let header = `<html>
             <head>
                 <meta charset="UTF-8"/>
@@ -56,8 +56,8 @@ module.exports.handler = (event, context, callback) => {
                   </script>
                 
         `;
-    let html = header+ html_02 +flooter;
-    callback(null, {headers : {"content-type" : 'text/html'}, statusCode : 200, body : html});
+    global_html = header+ html_02 +flooter;
+    callback(null, {headers : {"content-type" : 'text/html'}, statusCode : 200, body : global_html});
   }else if(params.comment){
     let html_02 = `
 
@@ -71,8 +71,8 @@ module.exports.handler = (event, context, callback) => {
                   </script>
                 
         `;
-    let html = header+ html_02 +flooter;
-    callback(null, {headers : {"content-type" : 'text/html'}, statusCode : 200, body : html});
+    global_html = header+ html_02 +flooter;
+    callback(null, {headers : {"content-type" : 'text/html'}, statusCode : 200, body : global_html});
   }
 
 
