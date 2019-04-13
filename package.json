@@ -4,8 +4,8 @@
   "description": "blog_view",
   "main": "index.html",
   "scripts": {
-    "build": "netlify-lambda build functions",
-    "start": "netlify-lambda serve functions"
+    "serve:lambda": "netlify-lambda serve functions",
+    "build:lambda": "netlify-lambda build functions"
   },
   "keywords": [
     "netlify",
