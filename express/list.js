@@ -45,7 +45,15 @@ module.exports.handler = async function(event, context) {
         </html>
 `
     };
-  }).catch(err =>{statusCode:1001,body:String(err)});
+  }).catch(err =>{
+    return {
+      headers : {
+        "content-type" : 'text/html'
+      },
+      statusCode : 200,
+      body : String(err)
+    };
+  });
 
 };
 
