@@ -60,8 +60,8 @@ module.exports.handler = (event, context, callback) => {
     let query_str = "c_"+params.id;
     let query_length = query_str.length;
     let index_str = html_02.indexOf(query_str);
-    let html_03 = `<span><strong>${params.comment}$(index_str+query_length)</strong></span><br>`;
-    html_02 = html_02.slice(0,index_str+query_length)+html_03+html_02.slice(index_str+query_length);
+    let html_03 = `<span><strong>$(index_str)</strong></span><br>`;
+    html_02 = html_02.slice(0,index_str+query_length+2)+html_03+html_02.slice(index_str+query_length+2);
 
   }else if(queryStringParameters.clearBlog){
 
