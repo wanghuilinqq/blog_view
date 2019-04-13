@@ -32,12 +32,12 @@ module.exports.handler = (event, context, callback) => {
   if(params.title) {
     html_02 += `
                        <div>
-                              <span>
-                                  <h3> 标题-<strong style="color: red"></strong>${params.title}</h3>
-                              </span>
-                              <span>
-                                   正文-<strong style="color: darkgreen">${params.text}</strong>
-                              </span>
+                          <span>
+                              <h3><strong style="color: cyan">博客-${id}</strong> &nbsp;标题-<strong style="color: goldenrod"></strong>${params.title}</h3>
+                          </span>
+                          <span>
+                               正文-<strong style="color: darkgreen">${params.text}</strong>
+                          </span>
                           </div>
                         
                           <br>
@@ -63,9 +63,11 @@ module.exports.handler = (event, context, callback) => {
     let html_03 = `<span><strong>${params.comment}</strong></span><br>`;
     html_02 = html_02.slice(0, index_str + query_length) + html_03 + html_02.slice(index_str + query_length);
 
-  } else if(params.hasOwnProperty(clearBlog)) {
+  } else if(params.clearBlog) {
     html_02 = ``;
     id = 1;
+  }else if(params.myBlog) {
+    html = header + html_02 + flooter;
   }
 
   html = header + html_02 + flooter;

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a335484b-84ab-4bd1-81d2-c03f5768525c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/express/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/express/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,10 +19,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/express/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="625">
+              <caret line="70" column="3" lean-forward="true" selection-start-line="70" selection-start-column="3" selection-end-line="70" selection-end-column="3" />
               <folding>
+                <element signature="n#style#0;n#strong#0;n#h3#0;n#span#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#163#169#0" expanded="true" />
                 <element signature="n#style#0;n#strong#0;n#h3#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#strong#0;n#h3#0;n#span#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#strong#0;n#span#1;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -31,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="69" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="69" />
+            <state relative-caret-position="450">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -135,12 +139,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555139484461</updated>
-      <workItem from="1555139489868" duration="24033000" />
+      <workItem from="1555139489868" duration="24388000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24033000" />
+    <option name="totallyTimeSpent" value="24388000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -240,17 +244,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="69" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="69" />
+        <state relative-caret-position="450">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/express/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="625">
+          <caret line="70" column="3" lean-forward="true" selection-start-line="70" selection-start-column="3" selection-end-line="70" selection-end-column="3" />
           <folding>
+            <element signature="n#style#0;n#strong#0;n#h3#0;n#span#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#163#169#0" expanded="true" />
             <element signature="n#style#0;n#strong#0;n#h3#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#strong#0;n#h3#0;n#span#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#strong#0;n#span#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
