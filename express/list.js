@@ -4,7 +4,7 @@ let fs = require('fs');
 
 function get_file() {
   return new Promise(function(resolve, reject) {
-    fs.readFile('../src/data.json', function(err, data) {
+    fs.readFile('https://condescending-franklin-acde9d.netlify.com/data/data.json', function(err, data) {
       if(err) {
         reject(err);
       } else {
