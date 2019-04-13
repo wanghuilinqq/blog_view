@@ -1,7 +1,4 @@
 import querystring from "querystring";
-import style from "../public/stylesheets/style.css";
-import jquery from "../public/extern/jquery/jquery-1.11.1.min.js";
-
 const fs = require('fs');
 module.exports.handler = function(event, context, callback) {
   const params = querystring.parse(event.body);
@@ -16,7 +13,7 @@ module.exports.handler = function(event, context, callback) {
         <meta charset="UTF-8"/>
         <title>Blog</title>
         <meta http-equiv ="Content-Security-Policy" content="upgrade-insecure-requests">
-        <style type="text/css"> ${style} </style>
+        <link rel="stylesheet" href="https://flamboyant-bhabha-fbbffb.netlify.com/public/stylesheets/style.css">
     </head>
     <body>
     
@@ -51,8 +48,8 @@ module.exports.handler = function(event, context, callback) {
                 <input type="button" value="评论" id="btnPost">
             </div>
         </div>
-        <script src="./public/extern/jquery/jquery-1.11.1.min.js"></script>
-        <script>${jquery}</script>
+        <script src="https://flamboyant-bhabha-fbbffb.netlify.com/public/extern/jquery/jquery-1.11.1.min.js"></script>
+       
         <script>
             $(document).ready(function() {
                 $('#btnPost').click(onClickPost);
