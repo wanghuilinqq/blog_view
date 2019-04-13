@@ -58,32 +58,8 @@ module.exports.handler = (event, context,callback) => {
                         <input type="submit" value="评论" id="btnPost">
                     </form>
                 </div>
-                <!--<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>-->
-               <!---->
-                <!--<script>-->
-                    <!--$(document).ready(function() {-->
-                        <!--$('#btnPost').click(onClickPost);-->
-                    <!--});-->
-                <!---->
-                    <!--function onClickPost() {-->
-                        <!--var comment = $('#comment').val();-->
-                        <!--$.ajax({-->
-                          <!--type: "POST",-->
-                          <!--url: "/.netlify/functions/look",-->
-                          <!--dataType: "json",-->
-                          <!--data: {comment:comment},-->
-                          <!--success: function(data){-->
-                                <!--alert(JSON.stringify(data));-->
-                                <!--$('#comment').empty();-->
-                                <!--var html = '<p"' + data.comment + '</p> <br>';-->
-                                <!--$('#div1').html(html);-->
-                          <!--}-->
-                        <!--})-->
-                    <!--}-->
-                <!---->
-                <!--</script>-->
             </body>
-        </html>`
+        </html>`;
       callback(null,{headers : {"content-type" : 'text/html'}, statusCode : 1001, body : html});
     });
   });

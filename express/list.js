@@ -1,16 +1,15 @@
 import querystring from "querystring";
 
 let fs = require('fs');
-module.exports.handler = function(event, context, callback) {
+module.exports.handler = async function(event, context) {
   const params = querystring.parse(event.body);
-  fs.readFile('../src/data.json', function(err, data) {
-    if(err) {
-      throw err;
-    }
+  new Promise(() => {
+    fs.readFile('../src/data.json')
+  }).then(data => {
     let person = data.toString();
     person = JSON.parse(person);
     let rets = person.data;
-    callback(null, {
+    return {
       headers : {
         "content-type" : 'text/html'
       },
@@ -34,8 +33,8 @@ module.exports.handler = function(event, context, callback) {
             </body>
         </html>
 `
-    });
-  })
+    };
+  }).catch(err => err);
 
 };
 
