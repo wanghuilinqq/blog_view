@@ -1,9 +1,13 @@
 import querystring from "querystring";
-
+function foo(){
+  let p = new Promise((resolve,reject)=>{
+    
+  })
+}
 let fs = require('fs');
 module.exports.handler = (event, context,callback) => {
   let params = querystring.parse(event.body);
-  fs.readFile('../src/data.json', 'utf8', function(err, data) {
+  new Promise()fs.readFile('../src/data.json', 'utf8', function(err, data) {
     if(err) {
       callback({headers : {"content-type" : 'text/html'}, statusCode : 1001, body : String(err)});
     }

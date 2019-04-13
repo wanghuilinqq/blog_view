@@ -1,11 +1,22 @@
 import querystring from "querystring";
 
 let fs = require('fs');
+
+function get_file() {
+  return new Promise(function(resolve, reject) {
+    fs.readFile('../src/data.json', function(err, data) {
+      if(err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+}
+
 module.exports.handler = async function(event, context) {
   const params = querystring.parse(event.body);
-  new Promise(() => {
-    fs.readFile('../src/data.json')
-  }).then(data => {
+  get_file().then(data => {
     let person = data.toString();
     person = JSON.parse(person);
     let rets = person.data;
@@ -34,7 +45,7 @@ module.exports.handler = async function(event, context) {
         </html>
 `
     };
-  }).catch(err => err);
+  }).catch(err =>{statusCode:1001,body:String(err)});
 
 };
 
