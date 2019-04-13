@@ -3,12 +3,17 @@ import querystring from "querystring";
 let fs = require('fs');
 module.exports.handler = async function(event, context, callback) {
   let params = querystring.parse(event.body);
+
   callback(null, {
     headers : {
       "content-type" : 'text/html'
     },
     statusCode : 200,
-    body : `
+    body : html
+  });
+};
+
+let html = `
         <html>
             <head>
                 <meta charset="UTF-8"/>
@@ -49,7 +54,7 @@ module.exports.handler = async function(event, context, callback) {
                         <input type="button" value="评论" id="btnPost">
                     </div>
                 </div>
-                    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+                <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
                
                 <script>
                     $(document).ready(function() {
@@ -60,7 +65,7 @@ module.exports.handler = async function(event, context, callback) {
                         var comment = $('#comment').val();
                         $.ajax({
                           type: "POST",
-                          url: "/.netlify/functions/look",
+                          url: "/.netlify/functions/server",
                           dataType: "json",
                           data: {comment:comment},
                           success: function(data){
@@ -75,6 +80,4 @@ module.exports.handler = async function(event, context, callback) {
                 </script>
             </body>
         </html>
-    `
-  });
-};
+    `;
