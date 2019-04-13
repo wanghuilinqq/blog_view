@@ -1,18 +1,13 @@
-'use strict';
-const express = require('express');
-const serverless = require('serverless-http');
-const app = express();
-const bodyParser = require('body-parser');
+import querystring from "querystring";
 
-const router = express.Router();
-router.post('/', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  let data = req.body;
-  res.render('../look.html',data);
-});
+module.exports.handler = function(event, context, callback){
+  const params = querystring.parse(event.body);
+  callback(null, {
+    headers: {
+      "content-type": 'text/html'
+    },
+    statusCode: 200,
+    body: {data:params.comment}
+    });
+};
 
-app.use(bodyParser.json());
-app.use('/.netlify/functions/look', router);
-
-module.exports = app;
-module.exports.handler = serverless(app);
