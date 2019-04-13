@@ -1,26 +1,28 @@
 import querystring from "querystring";
 
 let fs = require('fs');
-module.exports.handler = async(event, context) => {
+module.exports.handler = (event, context,callback) => {
   let params = querystring.parse(event.body);
-  new Promise((resolve, reject) => {
-    fs.readFile('../src/data.json', 'utf8');
-  }).then(data => {
+  fs.readFile('../src/data.json', 'utf8', function(err, data) {
+    if(err) {
+      callback({headers : {"content-type" : 'text/html'}, statusCode : 1001, body : String(err)});
+    }
     let person = data.toString();
     person = JSON.parse(person);
     let temp_param = {
       "id" : person.data.length + 1,
       "title" : params.title,
-      "text" : params.text
+      "text" : params.text,
+      "comment":[]
     };
     person.data.push(temp_param);
     person.total = person.data.length;
     let str = JSON.stringify(person);
-    fs.writeFile('../src/data.json', str);
-  }).then(data => (resolve({
-    headers : {"content-type" : 'text/html'},
-    statusCode : 200,
-    body : `<html>
+    fs.writeFile('../src/data.json', str,function(err,rest) {
+      if(err){
+        callback({headers : {"content-type" : 'text/html'}, statusCode : 1001, body : String(err)});
+      }
+      let html =  `<html>
             <head>
                 <meta charset="UTF-8"/>
                 <title>Blog</title>
@@ -50,42 +52,40 @@ module.exports.handler = async(event, context) => {
                 <span>评论</span>
                 <hr>
                 <div>
-                    <div id="div1">
-                        
-                    </div>
-                    <br>
-                    <div id="div2">
+                    <form method="post" action="/.netlify/functions/look">
                         发表评论：<br>
                         <input type="text" name="comment" id="comment"><br>
-                        <input type="button" value="评论" id="btnPost">
-                    </div>
+                        <input type="submit" value="评论" id="btnPost">
+                    </form>
                 </div>
-                <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-               
-                <script>
-                    $(document).ready(function() {
-                        $('#btnPost').click(onClickPost);
-                    });
-                
-                    function onClickPost() {
-                        var comment = $('#comment').val();
-                        $.ajax({
-                          type: "POST",
-                          url: "/.netlify/functions/look",
-                          dataType: "json",
-                          data: {comment:comment},
-                          success: function(data){
-                                alert(JSON.stringify(data));
-                                $('#comment').empty();
-                                var html = '<p"' + data.comment + '</p> <br>';
-                                $('#div1').html(html);
-                          }
-                        })
-                    }
-                
-                </script>
+                <!--<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>-->
+               <!---->
+                <!--<script>-->
+                    <!--$(document).ready(function() {-->
+                        <!--$('#btnPost').click(onClickPost);-->
+                    <!--});-->
+                <!---->
+                    <!--function onClickPost() {-->
+                        <!--var comment = $('#comment').val();-->
+                        <!--$.ajax({-->
+                          <!--type: "POST",-->
+                          <!--url: "/.netlify/functions/look",-->
+                          <!--dataType: "json",-->
+                          <!--data: {comment:comment},-->
+                          <!--success: function(data){-->
+                                <!--alert(JSON.stringify(data));-->
+                                <!--$('#comment').empty();-->
+                                <!--var html = '<p"' + data.comment + '</p> <br>';-->
+                                <!--$('#div1').html(html);-->
+                          <!--}-->
+                        <!--})-->
+                    <!--}-->
+                <!---->
+                <!--</script>-->
             </body>
         </html>`
-  }))).catch(error => (resolve({statusCode : 404, body : String(error)})));
+      callback(null,{headers : {"content-type" : 'text/html'}, statusCode : 1001, body : html});
+    });
+  });
 };
 
