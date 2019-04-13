@@ -64,6 +64,7 @@ module.exports.handler = function(event, context, callback) {
                   data: {comment:comment},
                   dataType: "json",
                   success: function(data){
+                        alert(JSON.stringify(data))
                         $('#comment').empty();
                         var html = '<div><p"' + data.comment + '</p></div>';
                         $('#div1').html(html);

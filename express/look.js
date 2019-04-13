@@ -1,13 +1,8 @@
-import querystring from "querystring";
-
 module.exports.handler = function(event, context, callback){
-  // const params = querystring.parse(event.body);
+  let query = event.queryStringParameters.comment || 'null';
   callback(null, {
-    headers: {
-      "content-type": 'text/html'
-    },
     statusCode: 200,
-    body: "heel"
-    });
+    body: {data:query.comment}
+  });
 };
 
