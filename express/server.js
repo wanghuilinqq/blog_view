@@ -1,7 +1,7 @@
 import querystring from "querystring";
 
 let fs = require('fs');
-module.exports.handler = function(event, context, callback) {
+module.exports.handler = async function(event, context, callback) {
   let params = querystring.parse(event.body);
   callback(null, {
     headers : {
