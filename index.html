@@ -15,32 +15,15 @@
             <span><a title="主页" href="/">发表博客</a></span>
             </nav>
             <article>
-            <form method="post">
+            <form method="post" action="/.netlify/functions/server">
                 标题：<br/>
                 <input type="text" name="title" id="title"/><br/>
                 正文：<br/>
                 <textarea name="text" rows="20" cols="100" id="text"></textarea><br/>
-                <input type="button" value="发表" id="btnPost" />
+                <input type="submit" value="发表" id="btnPost" />
             </form>
             </article>
-            <script src="./public/extern/jquery/jquery-1.11.1.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    $('#btnPost').click(onClickPost);
-                });
-
-                function onClickPost() {
-                    var title = $('#title').val();
-                    var text = $('#text').val();
-                    var btn = $(this);
-                    $.post('https://eloquent-swartz-b4b518.netlify.com/.netlify/functions/server',
-                    {title:title,text:text},
-                    function(result){
-                        
-                    })
-                }
-
-            </script>
+         
       </body>
 </html>
 
