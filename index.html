@@ -10,18 +10,19 @@
             <header>
             <h1>我的博客</h1>
             </header>
-            
+
             <nav>
             <span><a title="主页" href="/">发表博客</a></span>
             </nav>
+
             <article>
-            <form method="post" action="/.netlify/functions/server">
-                标题：<br/>
-                <input type="text" name="title" id="title"/><br/>
-                正文：<br/>
-                <textarea name="text" rows="20" cols="100" id="text"></textarea><br/>
-                <input type="submit" value="发表" id="btnPost" />
-            </form>
+                <form method="post" action="/.netlify/functions/server">
+                    标题：<br/>
+                    <input type="text" name="title" id="title"/><br/>
+                    正文：<br/>
+                    <textarea name="text" rows="20" cols="100" id="text"></textarea><br/>
+                    <input type="submit" value="发表" id="btnPost" />
+                </form>
             </article>
       </body>
 </html>
