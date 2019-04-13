@@ -55,26 +55,20 @@ module.exports.handler = (event, context, callback) => {
                        </div>
         `;
     id += 1;
-    html = header + html_02 + flooter;
-
 
   } else if(params.comment) {
     let query_str = "c_"+params.id;
     let query_length = query_str.length;
     let index_str = html_02.indexOf(query_str);
-    let html_03 = `<span><strong>${params.comment}</strong></span><br>`;
-    // let html_03_length = html_03.length;
+    let html_03 = `<span><strong>${params.comment}$(index_str+query_length)</strong></span><br>`;
     html_02 = html_02.slice(0,index_str+query_length)+html_03+html_02.slice(index_str+query_length);
 
-    html = header + html_02+ flooter;
+  }else if(queryStringParameters.clearBlog){
 
-
-
-  } else if(params.myBlog) {
-    html = header + html_02 + flooter;
+    html_02 = ``;
   }
 
-
+  html = header + html_02 + flooter;
 
   callback(null, {headers : {"content-type" : 'text/html'}, statusCode : 200, body : html});
 
