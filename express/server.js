@@ -1,4 +1,3 @@
-'use strict';
 const express = require('express');
 const serverless = require('serverless-http');
 const fs = require('fs');
@@ -14,11 +13,11 @@ router.post('/', (req, res) => {
       "title":title,
       "text":text
     }
-    fs.writeFile('../src/data.json',json,'utf-8',function(err,data){
-      if(err){
-        throw err;
-      }
-    })
+    // fs.writeFile('../src/data.json',json,'utf-8',function(err,data){
+    //   if(err){
+    //     throw err;
+    //   }
+    // })
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write(`
     <div>
@@ -40,4 +39,11 @@ app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 
 module.exports = app;
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
+
+module.exports.handler = function(event, context, callback){
+  callback(null, {
+    statusCode: 200,
+    body: "Hello, World"
+    });
+};
