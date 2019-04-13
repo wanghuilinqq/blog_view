@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="always" name="referrer">
+    <title>Blog</title>
+    <link rel="stylesheet" href="./public/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+    <h1>我的博客</h1>
+</header>
+
+<nav>
+    <span><a title="主页" href="index.html">发表博客</a></span>
+</nav>
+
+<br>
+
+<object
+  type="text/html"
+  data="/.netlify/functions/server"
+>
+<br>
+<span>评论</span>
+<hr>
+<div>
+    <div id="div1">
+        <p></p>
+    </div>
+    <br>
+    <div id="div2">
+        发表评论：<br>
+        <input type="text" name="comment" id="comment"><br>
+        <input type="button" value="评论" id="btnPost">
+    </div>
+</div>
+
+</body>
+</html>
