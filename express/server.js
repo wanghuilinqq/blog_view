@@ -16,6 +16,7 @@ let header = `<html>
                     <span><a title="主页" href="https://condescending-franklin-acde9d.netlify.com/index.html">发表博客</a></span>
                 </nav>
                 <div id = "div_01"></div>
+                <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 
 `;
 
@@ -24,10 +25,9 @@ let flooter = `
     </html>
 `;
 module.exports.handler = (event, context, callback) => {
-
   let params = querystring.parse(event.body);
-  let html_02 = `
-                <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  if(params.title){
+    let html_02 = `
                  <script>
                   $(document).ready(function(){
                        let temp_html ="<div>\\n" +
@@ -42,8 +42,9 @@ module.exports.handler = (event, context, callback) => {
                         "                <br>\\n" +
                         "                <span>评论</span>\\n" +
                         "                <hr>\\n" +
+                        "                <div id=\\"div_02\\"> </div>\\n"+
                         "                <div>\\n" +
-                        "                    <form method=\\"post\\" action=\\"/.netlify/functions/look\\">\\n" +
+                        "                    <form method=\\"post\\" action=\\"/.netlify/functions/server\\">\\n" +
                         "                        发表评论：<br>\\n" +
                         "                        <input type=\\"text\\" name=\\"comment\\" id=\\"comment\\"><br>\\n" +
                         "                        <input type=\\"submit\\" value=\\"评论\\" id=\\"btnPost\\">\\n" +
@@ -55,8 +56,26 @@ module.exports.handler = (event, context, callback) => {
                   </script>
                 
         `;
-  let html = header+ html_02 +flooter;
-  callback(null, {headers : {"content-type" : 'text/html'}, statusCode : 200, body : html});
+    let html = header+ html_02 +flooter;
+    callback(null, {headers : {"content-type" : 'text/html'}, statusCode : 200, body : html});
+  }else if(params.comment){
+    let html_02 = `
+
+                <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+                 <script>
+                  $(document).ready(function(){
+                       let temp_html ="<span><strong>${params.comment}</strong></span><br>";
+                        $("#div_02").append(temp_html);
+                  });
+                    
+                  </script>
+                
+        `;
+    let html = header+ html_02 +flooter;
+    callback(null, {headers : {"content-type" : 'text/html'}, statusCode : 200, body : html});
+  }
+
+
 
 };
 
