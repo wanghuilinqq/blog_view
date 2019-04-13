@@ -3,7 +3,9 @@ import querystring from "querystring";
 let fs = require('fs');
 module.exports.handler = async(event, context) => {
   let params = querystring.parse(event.body);
-  fs.readFile('../src/data.json', 'utf8').then(data => {
+  new Promise((resolve, reject) => {
+    fs.readFile('../src/data.json', 'utf8');
+  }).then(data => {
     let person = data.toString();
     person = JSON.parse(person);
     let temp_param = {
@@ -15,7 +17,7 @@ module.exports.handler = async(event, context) => {
     person.total = person.data.length;
     let str = JSON.stringify(person);
     fs.writeFile('../src/data.json', str);
-  }).then(data => ({
+  }).then(data => (resolve({
     headers : {"content-type" : 'text/html'},
     statusCode : 200,
     body : `<html>
@@ -84,6 +86,6 @@ module.exports.handler = async(event, context) => {
                 </script>
             </body>
         </html>`
-  })).catch(error => ({statusCode : 404, body : String(error)}));
+  }))).catch(error => (resolve({statusCode : 404, body : String(error)})));
 };
 
