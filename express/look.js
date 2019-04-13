@@ -1,8 +1,8 @@
 module.exports.handler = function(event, context, callback){
-  let comment = event.queryStringParameters.comment || 'null';
+  let params = querystring.parse(event.body);
   callback(null, {
     statusCode: 200,
-    body: {data:comment}
+    body: {data:params.comment}
   });
 };
 

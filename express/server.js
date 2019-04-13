@@ -1,4 +1,5 @@
 import querystring from "querystring";
+
 let fs = require('fs');
 module.exports.handler = function(event, context, callback) {
   let params = querystring.parse(event.body);
@@ -57,16 +58,15 @@ module.exports.handler = function(event, context, callback) {
                 
                     function onClickPost() {
                         var comment = $('#comment').val();
-                        var btn = $(this);
                         $.ajax({
-                          type: "GET",
+                          type: "POST",
                           url: "/.netlify/functions/look",
-                          data: {comment:comment},
                           dataType: "json",
+                          data: {comment:comment},
                           success: function(data){
-                                alert(JSON.stringify(data))
+                                alert(JSON.stringify(data));
                                 $('#comment').empty();
-                                var html = '<div><p"' + data.comment + '</p></div>';
+                                var html = '<p"' + data.comment + '</p> <br>';
                                 $('#div1').html(html);
                           }
                         })
