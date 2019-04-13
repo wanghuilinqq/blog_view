@@ -43,7 +43,7 @@ module.exports.handler = (event, context, callback) => {
                           <br>
                           <span>评论</span>
                           <hr>
-                          <div id="c_${id}"> </div>
+                          <div id="cc_${id}">mmmm </div>
                           <div>
                             <form method="post" action="/.netlify/functions/server">
                                 发表评论：<br>
@@ -57,13 +57,13 @@ module.exports.handler = (event, context, callback) => {
     id += 1;
 
   } else if(params.comment) {
-    let query_str = "c_"+params.id;
-    let query_length = query_str.length;
-    let index_str = html_02.indexOf(query_str);
+    let query_str = "cc_" + params.id;
+    let query_length = query_str.length + 2;
+    let index_str = html_02.indexOf('mmm');
     let html_03 = `<span><strong>${index_str}</strong></span><br>`;
-    html_02 = html_02.slice(0,index_str+query_length+2)+html_03+html_02.slice(index_str+query_length+2);
+    html_02 = html_02.slice(0, index_str + query_length) + html_03 + html_02.slice(index_str + query_length);
 
-  }else if(queryStringParameters.clearBlog){
+  } else if(params.clearBlog) {
 
     html_02 = ``;
   }

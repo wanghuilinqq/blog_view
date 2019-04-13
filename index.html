@@ -13,8 +13,17 @@
 
             <nav>
                 <span><a title="主页" href="/">发表博客</a></span>
-                <span><a title="主页" href="/.netlify/functions/server?myBlog=1">我的博客</a></span>
-                <span><a title="主页" href="/.netlify/functions/server?clearBlog=1">清空博客</a></span>
+
+                <span> <form method="post" action="/.netlify/functions/server">
+
+                    <input type="hidden" name="myBlog" id="myBlog"/><br/>
+
+                    <input type="submit" value="我的博客"/>
+                </form></span>
+                <span><form method="post" action="/.netlify/functions/server">
+                  <input type="hidden" name="clearBlog" id="clearBlog"/><br/>
+                  <input type="submit" value="清空博客">
+                </form></span>
             </nav>
 
             <article>
