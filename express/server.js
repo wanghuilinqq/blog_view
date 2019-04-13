@@ -1,7 +1,7 @@
 import querystring from "querystring";
 const fs = require('fs');
 module.exports.handler = function(event, context, callback) {
-  const params = querystring.parse(event.body);
+  let params = querystring.parse(event.body);
   callback(null, {
     headers : {
       "content-type" : 'text/html'
@@ -13,14 +13,14 @@ module.exports.handler = function(event, context, callback) {
         <meta charset="UTF-8"/>
         <title>Blog</title>
         <meta http-equiv ="Content-Security-Policy" content="upgrade-insecure-requests">
-        <link rel="stylesheet" href="https://flamboyant-bhabha-fbbffb.netlify.com/public/stylesheets/style.css">
+        <link rel="stylesheet" href="https://condescending-franklin-acde9d.netlify.com/public/stylesheets/style.css">
     </head>
     <body>
     
         <header> <h1>我的博客</h1> </header>
         
         <nav>
-            <span><a title="主页" href="https://flamboyant-bhabha-fbbffb.netlify.com/index.html">发表博客</a></span>
+            <span><a title="主页" href="https://condescending-franklin-acde9d.netlify.com/index.html">发表博客</a></span>
         </nav>
         
         <div>
@@ -42,7 +42,7 @@ module.exports.handler = function(event, context, callback) {
                 
             </div>
             <br>
-            <form method="post" action="/.netlify/functions/look">
+            <form method="get" action="/.netlify/functions/server">
                 发表评论：<br>
                 <input type="text" name="comment" id="comment"><br>
                 <input type="submit" value="评论" id="btnPost">
