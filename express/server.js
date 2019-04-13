@@ -1,3 +1,4 @@
+import querystring from "querystring";
 const express = require('express');
 const serverless = require('serverless-http');
 const fs = require('fs');
@@ -42,8 +43,23 @@ module.exports = app;
 // module.exports.handler = serverless(app);
 
 module.exports.handler = function(event, context, callback){
+  const params = querystring.parse(event.body);
   callback(null, {
+    headers: {
+      "content-type": 'text/html'
+    },
     statusCode: 200,
-    body: JSON.stringify(event.body)
+    body: `
+    <div>
+    <span id="t3"></span>
+    <span>
+        <h3> <strong style="color: red" id="t1"></strong>${params.title}</h3>
+    </span>
+    <span>
+         <strong style="color: darkgreen" id="t2">${params.text}</strong>
+    </span>
+
+    </div>
+    `
     });
 };
